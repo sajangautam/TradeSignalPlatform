@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TradeSignalManager.Core\TradeSignalManager.Core.csproj" />
+    <ProjectReference Include="..\TradeSignalManager.Application\TradeSignalManager.Application.csproj" />
+    <ProjectReference Include="..\TradeSignalManager.Infrastructure\TradeSignalManager.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

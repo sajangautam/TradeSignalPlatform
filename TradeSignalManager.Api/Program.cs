@@ -1,9 +1,15 @@
+using TradeSignalManager.Core.Interfaces;
+using TradeSignalManager.Infrastructure.Repositories;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+builder.Services.AddScoped<ITradeSignalRepository, InMemoryTradeSignalRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddControllers();
 
 
 var app = builder.Build();
