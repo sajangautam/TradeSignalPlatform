@@ -4,6 +4,16 @@ using TradeSignalManager.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add after CreateBuilder()
+builder.Services.AddCors(options => {
+    options.AddDefaultPolicy(policy => {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<ITradeSignalRepository, InMemoryTradeSignalRepository>();
@@ -22,6 +32,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseCors();
 app.MapControllers();
 app.Run();
 
