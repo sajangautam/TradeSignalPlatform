@@ -482,3 +482,25 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Terraform and AWS
+#####################
+# Terraform directories
+.terraform/
+.terraform.lock.hcl
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform variables
+*.tfvars
+*.tfvars.json
+
+# AWS credentials
+*.pem
+*.ppk
+*.aws_credentials
+
+# Provider cache (Windows)
+*.exe
