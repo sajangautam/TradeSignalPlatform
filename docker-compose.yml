@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tradesignal-api:latest
+    ports:
+      - "5000:8080"        # Map host 5000 to container port 80 (ASP.NET default)
+    networks:
+      - app-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: "http://localhost:5000"
+    image: tradesignal-client:latest
+    ports:
+      - "3000:80"        # React served by nginx on port 80 inside container
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

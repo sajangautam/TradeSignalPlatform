@@ -14,7 +14,7 @@ namespace TradeSignalManager.Infrastructure.Data
                 context.Tickers.RemoveRange(context.Tickers);
                 context.SaveChanges();
 
-                var jsonFilePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "TradeSignalManager.Infrastructure", "Data", "sp500.json");
+                var jsonFilePath = Path.Combine(AppContext.BaseDirectory, "TradeSignalManager.Infrastructure", "Data", "sp500.json");
                 var jsonData = File.ReadAllText(jsonFilePath);
 
                 var options = new JsonSerializerOptions

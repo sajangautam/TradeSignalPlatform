@@ -49,11 +49,9 @@ using (var scope = app.Services.CreateScope())
     SeedSp500.Seed(context); // Run the seeding
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
