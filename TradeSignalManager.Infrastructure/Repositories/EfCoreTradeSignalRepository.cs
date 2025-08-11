@@ -13,6 +13,21 @@ namespace TradeSignalManager.Infrastructure.Repositories
             _context = context;
         }
 
+
+        public async Task<List<Ticker>> SearchTickersAsync(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+                return new List<Ticker>();
+
+            query = query.ToLower();
+
+            return await _context.Tickers
+                .Where(t => t.Symbol.ToLower().Contains(query) || t.Name.ToLower().Contains(query))
+                .Take(50)
+                .ToListAsync();
+        }
+
+
         // Return the added entity after saving
         public async Task<TradeSignal> AddAsync(TradeSignal signal)
         {

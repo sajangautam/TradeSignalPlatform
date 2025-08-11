@@ -7,5 +7,7 @@ namespace TradeSignalManager.Core.Interfaces
         Task<TradeSignal> AddAsync(TradeSignal signal);
         Task<IEnumerable<TradeSignal>> GetAllAsync();
         Task<TradeSignal?> GetByIdAsync(int id);
+        Task<List<Ticker>> SearchTickersAsync(string query);
+
     }
 }

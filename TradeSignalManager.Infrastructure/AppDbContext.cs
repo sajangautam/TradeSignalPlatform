@@ -5,10 +5,9 @@ namespace TradeSignalManager.Infrastructure
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<TradeSignal> TradeSignals { get; set; }
+        public DbSet<TradeSignal> TradeSignals { get; set; }  // existing
+        public DbSet<Ticker> Tickers { get; set; }            // NEW
     }
 }
