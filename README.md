@@ -41,4 +41,25 @@ TradeSignalPlatform/
    docker compose up --build
 
 3. Remove the existing container:
-   docker compose down 
+   docker compose down
+
+## Running whole application with kubernetes
+1. Navigate to the root folder of the project:
+   cd TradeSignalPlatform
+
+2. Build the docker images:
+   docker build -t tradesignal-backend:latest .
+   docker build -t tradesignal-client:latest .
+
+3. Apply your Kubernetes manifests:
+   kubectl apply -f k8s/backend-deployment.yaml
+   kubectl apply -f k8s/frontend-deployment.yaml
+
+4. Apply your Kubernetes manifests:
+   kubectl delete pods -l app=tradesignal-backend
+   kubectl delete pods -l app=tradesignal-frontend
+
+5. Verify pods and services are running:
+   kubectl get pods
+   kubectl get services
+
