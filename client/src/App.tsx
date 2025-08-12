@@ -12,9 +12,10 @@ const App: React.FC = () => {
     setLoading(true);
     setError(null);
     setStockData(null);
+    console.log('API URL used by frontend:', process.env.REACT_APP_API_URL);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/marketdata/search?symbol=${symbol}`);
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/marketdata/search?symbol=${symbol}`);
       if (response.status === 404) {
       setError("Not an S&P 500 stock");
       return;

@@ -19,9 +19,9 @@ builder.Services.AddHttpClient<AlphaVantageService>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("http://localhost:30000")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -55,7 +55,7 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.UseCors();
+app.UseCors("AllowFrontend");
 app.MapControllers();
 app.Run();
 

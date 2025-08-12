@@ -10,10 +10,9 @@ RUN npm ci
 COPY . .
 
 # Allow injecting API URL at build time (this writes a .env used by CRA)
-ARG REACT_APP_API_URL=http://localhost:5000
+ARG REACT_APP_API_URL=http://localhost:30001
 RUN echo "REACT_APP_API_URL=${REACT_APP_API_URL}" > .env
 
-# build production bundle
 RUN npm run build
 
 # Stage 2: Serve with nginx
