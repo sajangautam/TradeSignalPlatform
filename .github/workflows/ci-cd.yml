@@ -81,7 +81,7 @@ jobs:
       - name: Install kubectl
         uses: azure/setup-kubectl@v3
         with:
-          version: '1.32.2'
+          version: 'latest' # or 'v1.29.0' if you want to pin
 
       - name: Configure kubeconfig (from secret)
         env:
@@ -101,3 +101,4 @@ jobs:
         run: |
           kubectl set image deployment/tradesignal-frontend tradesignal-frontend=${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE }}:${{ github.sha }} --record
           kubectl rollout status deployment/tradesignal-frontend --timeout=120s
+
