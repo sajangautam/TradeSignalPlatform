@@ -15,8 +15,8 @@ env:
   REGISTRY: ghcr.io
   BACKEND_IMAGE: ${{ github.repository_owner }}/tradesignal-backend
   FRONTEND_IMAGE: ${{ github.repository_owner }}/tradesignal-frontend
-  BACKEND_CONTEXT: TradeSignalPlatform
-  BACKEND_DOCKERFILE: TradeSignalPlatform/Dockerfile
+  BACKEND_CONTEXT: .
+  BACKEND_DOCKERFILE: Dockerfile
   FRONTEND_CONTEXT: client
   FRONTEND_DOCKERFILE: client/Dockerfile
 
